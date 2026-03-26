@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Paisabada | Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --teal: #00b4b0;
+            --navy: #002b5b;
+            --bg1: #e3fffb;
+            --bg2: #f5fffe;
+            --radius: 18px;
+        }
+
+        body {
+            font-family: Poppins, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 16px;
+        }
+
+        .card {
+            width: 95%;
+            max-width: 420px;
+
+            background: #fff;
+            padding: 40px 28px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .14);
+            animation: fadeUp .45s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        .input-box {
+            position: relative;
+            margin: 16px 0
+        }
+
+        .input-box input {
+            width: 75%;
+            padding: 14px 48px;
+            border-radius: 14px;
+            border: 1px solid #cbd5e1;
+            font-size: 16px;
+            outline: none;
+            transition: .25s;
+        }
+
+        .input-box input:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 8px rgba(0, 180, 176, .3);
+        }
+
+        .input-box i {
+            position: absolute;
+            top: 50%;
+            left: 14px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--teal);
+        }
+
+        .toggle-pass {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: var(--teal);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 12px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        button:hover {
+            background: #009d99;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+        }
+
+        .error,
+        .success {
+            display: none;
+            font-weight: 700;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .error {
+            color: #d9534f
+        }
+
+        .success {
+            color: #1da756
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0)
+            }
+
+            25% {
+                transform: translateX(-6px)
+            }
+
+            50% {
+                transform: translateX(6px)
+            }
+
+            75% {
+                transform: translateX(-6px)
+            }
+        }
+
+        /* =========================
+RESPONSIVE FIXES ONLY
+
+========================= */
+
+        /* Tablets */
+        @media (max-width: 768px) {
+            .card {
+                padding: 32px 22px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .input-box input {
+                width: 100%;
+                font-size: 15px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 14px;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .card {
+                padding: 28px 18px;
+
+                border-radius: 16px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+
+            .input-box {
+                margin: 14px 0;
+            }
+
+            .input-box input {
+                width: 100%;
+                padding: 13px 44px;
+                font-size: 14px;
+            }
+
+            .input-box i {
+                left: 12px;
+                font-size: 17px;
+            }
+
+            .toggle-pass {
+                right: 10px;
+                font-size: 17px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 13px;
+            }
+        }
+
+        /* Small phones (very narrow) */
+        @media (max-width: 360px) {
+            h2 {
+                font-size: 20px;
+            }
+
+            .card {
+                padding: 24px 14px;
+            }
+
+            .input-box input {
+                font-size: 13px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+
+        /* =========================
+GLOBAL SAFETY FIXES
+========================= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+CARD RESPONSIVENESS
+========================= */
+        .card {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* =========================
+INPUT WIDTH FIX (IMPORTANT)
+========================= */
+        .input-box input {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* =========================
+ICON + INPUT ALIGNMENT
+========================= */
+        .input-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-box i {
+            pointer-events: none;
+        }
+
+        /* =========================
+BUTTON TOUCH FRIENDLY
+========================= */
+        button {
+            min-height: 48px;
+        }
+
+        /* =========================
+VERY SMALL DEVICES (320px)
+========================= */
+        @media (max-width: 360px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .card {
+                padding: 22px 14px;
+            }
+
+            h2 {
+                font-size: 19px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .input-box input {
+                padding: 12px 42px;
+                font-size: 13px;
+            }
+
+            .toggle-pass {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .consent-text {
+                font-size: 13px;
+            }
+
+            .consent-note {
+                font-size: 11px;
+            }
+        }
+
+        /* =========================
+LANDSCAPE MOBILE FIX
+========================= */
+        @media (max-height: 500px) {
+            body {
+                align-items: flex-start;
+                padding-top: 20px;
+
+            }
+        }
+
+        /* =========================
+TABLET LARGE SCREENS
+========================= */
+        @media (min-width: 1024px) {
+            .card {
+                max-width: 460px;
+            }
+        }
+
+        /* =========================
+CONSENT UI
+========================= */
+
+        .consent-box {
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 12px;
+            background: #f7fffe;
+            border: 1px solid #cceeee;
+            text-align: left;
+        }
+
+        .consent-label {
+            display: flex;
+            gap: 10px;
+            cursor: pointer;
+            align-items: flex-start;
+
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.7;
+            margin-right: 10px;
+        }
+
+        .consent-label input {
+            display: none;
+        }
+
+        /* Custom checkbox */
+        .checkmark {
+            min-width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            border: 2px solid #00b4b0;
+            margin-top: 2px;
+            position: relative;
+        }
+
+        .consent-label input:checked+.checkmark {
+            background: #00b4b0;
+        }
+
+        .consent-label input:checked+.checkmark::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            left: 4px;
+            top: -1px;
+            font-weight: 700;
+
+        }
+
+        .consent-text {
+            font-size: 14px;
+        }
+
+        .consent-note {
+            margin: 6px 0 0 30px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* LOGO */
+        .logo {
+            width: 100px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* HEADER */
+        .header-text {
+            margin-top: 70px;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        .copyright {
+            margin-top: -60px;
+            font-size: 14px;
+            color: #2b313a;
+            text-align: center;
+        }
+
+        /* MOBILE */
+        @media (max-width:480px) {
+
+            .logo {
+                width: 80px;
+                top: 10px;
+                left: 16px;
+            }
+
+            .header-text {
+                margin-top: 60px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+        }
+
+        /* =========================
+CONSENT DROPDOWN ADD-ON
+========================= */
+
+        .toggle-more {
+            color: #00b4b0;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 6px;
+        }
+
+        /* hidden by default */
+        .consent-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-left: 30px;
+        }
+
+        /* open state */
+        .consent-details.active {
+            max-height: 300px;
+            margin-top: 8px;
+        }
+
+        /* ================= INSURANCE PARTNERS ================= */
+
+        .insurance-partners {
+            padding: 70px 0;
+            background: #f8fafc;
+            overflow: hidden;
+            margin-top: -50px;
+        }
+
+        .partners-title {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #0f172a;
+        }
+
+        .partners-title span {
+            color: #0EA496;
+        }
+
+        .partners-disclaimer {
+            max-width: 900px;
+            margin: 20px auto 5px;
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .partners-pos {
+            font-size: 12px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        /* carousel wrapper */
+        .logo-carousel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* track */
+        .logo-track {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            width: max-content;
+        }
+
+        /* logos */
+        /* .logo-track img {
+            height: 64px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.75;
+            transition: all .3s ease;
+        } */
+
+        /* uniform logo box */
+        .logo-track img {
+            height: 60px;
+            /* fixed visual height */
+            width: 140px;
+            /* fixed visual width */
+            object-fit: contain;
+            /* keep aspect ratio */
+            object-position: center;
+
+            filter: grayscale(100%);
+            opacity: 0.75;
+            transition: all .3s ease;
+        }
+
+        .logo-track img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        /* animations */
+        .logo-track.left {
+            animation: scrollLeft 28s linear infinite;
+        }
+
+        .logo-track.right {
+            animation: scrollRight 28s linear infinite;
+        }
+
+        @keyframes scrollLeft {
+            from {
+                transform: translateX(-50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scrollRight {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* mobile */
+        @media (max-width: 768px) {
+            .partners-title {
+                font-size: 17px;
+                padding: 0 20px;
+            }
+
+            .logo-track img {
+                height: 40px;
+                width: 80px;
+            }
+
+            .logo-track {
+                gap: 44px;
+                animation-duration: 35s;
+                /* align-items: center; */
+            }
+        }
+
+        /* ================= LUXURY LOGO CAROUSEL ================= */
+
+        .luxury-fade {
+            position: relative;
+        }
+
+        /* gradient fade edges */
+        .luxury-fade::before,
+        .luxury-fade::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 120px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .luxury-fade::before {
+            left: 0;
+            background: linear-gradient(to right, #f8fafc 30%, transparent);
+        }
+
+        .luxury-fade::after {
+            right: 0;
+            background: linear-gradient(to left, #f8fafc 30%, transparent);
+        }
+
+        /* pause on hover (desktop) */
+        .logo-carousel:hover .logo-track {
+            animation-play-state: paused;
+        }
+
+        /* pause on touch (mobile) */
+        .logo-track:active {
+            animation-play-state: paused;
+        }
+
+        /* smoother animation */
+        .logo-track {
+            will-change: transform;
+        }
+
+        /* SVG optimization */
+        .logo-track img {
+            image-rendering: -webkit-optimize-contrast;
+            backface-visibility: hidden;
+        }
+
+        /* IRDAI note */
+        .irdai-note {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 13px;
+            color: #64748b;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* mobile fade fix */
+        @media (max-width: 768px) {
+
+            .luxury-fade::before,
+            .luxury-fade::after {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card" id="signupCard">
+
+        <!-- <img src="img/paisabadalogo.jpeg" class="logo"> -->
+        <img src="logo-2-removebg-preview.png" class="logo">
+
+        <div class="header-text">
+            <h2>Create Account</h2>
+            <p class="subtitle">Let's start your Paisa journey</p>
+        </div>
+
+        <div class="input-box">
+            <i> </i>
+            <input id="signupName" placeholder="Full Name">
+        </div>
+
+        <div class="input-box">
+            <i> </i>
+            <input id="signupEmail" placeholder="Email address">
+        </div>
+
+        <div class="input-box">
+
+            <i> </i>
+            <input id="signupPhone" placeholder="Mobile Number" maxlength="10">
+        </div>
+        <!--
+<div class="input-box">
+<i> </i>
+<input id="signupPassword" type="password" placeholder="Create Password">
+<span class="toggle-pass" onclick="togglePassword()">👁</span>
+</div> -->
+
+        <div class="input-box" id="otpBox" style="display:none;">
+            <i> </i>
+            <input id="signupOtp" placeholder="Enter OTP">
+        </div>
+
+        <p id="otpInfo" style="font-size:13px;color:#64748b;margin-top:6px;display:none">
+            OTP valid for 5 minutes
+        </p>
+
+        <div class="error" id="errorMsg"></div>
+        <div class="success" id="successMsg"> Account created successfully!</div>
+
+        <!-- USER CONSENT -->
+        <!-- <div class="consent-box">
+<label class="consent-label">
+<input type="checkbox" id="userConsent">
+<span class="checkmark"></span>
+
+<span class="consent-text">
+I agree to receive important account-related updates such as
+<b>login alerts, wallet activity, and service communication</b>
+
+via <b>SMS, WhatsApp, Email, or Call</b> from <b>Paisabada</b>.
+</span>
+</label>
+
+<p class="consent-note">
+We respect your privacy. You can opt-out anytime from settings.
+</p>
+</div>
+-->
+
+        <!-- <div class="consent-box">
+            <label class="consent-label">
+                <input type="checkbox" id="userConsent" required>
+                <span class="checkmark"></span>
+
+                <span class="consent-text">
+                    I agree to the
+                    <a href="terms.html" target="_blank">Terms of Use</a>
+                    and
+                    <a href="privacy.html" target="_blank">Privacy Policy</a>
+                    and consent to being contacted by
+                    <b>Paisabada Financial Services (POSP)</b> and its authorized insurance
+                    intermediary partners via call, SMS, WhatsApp, or email for insurance
+                    and financial service facilitation.
+                </span>
+            </label>
+
+            <p class="consent-note">
+                You may opt-out of non-essential communication anytime.
+            </p>
+        </div> -->
+
+        <div class="consent-box">
+
+            <label class="consent-label">
+                <input type="checkbox" id="userConsent" required>
+                <span class="checkmark"></span>
+
+                <span class="consent-text">
+                    I agree to Terms & Privacy Policy
+                    <span class="toggle-more" onclick="toggleConsent()"> ▼</span>
+                </span>
+            </label>
+
+            <!-- DROPDOWN CONTENT -->
+            <div id="consentDetails" class="consent-details">
+                <p>
+                    I agree to the
+                    <a href="terms.html" target="_blank">Terms of Use</a>
+                    and
+                    <a href="privacy.html" target="_blank">Privacy Policy</a>
+                    and consent to being contacted by
+                    <b>Paisabada Financial Services (POSP)</b> and its authorized insurance
+                    intermediary partners via call, SMS, WhatsApp, or email.
+                </p>
+
+                <p class="consent-note">
+                    You may opt-out of non-essential communication anytime.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- <button onclick="signup()">Sign Up</button> -->
+
+        <button onclick="signup()" id="signupBtn">Send OTP</button>
+
+
+        <!-- ================= INSURANCE PARTNERS ================= -->
+        <section class="insurance-partners">
+            <h2 class="partners-title">
+                Our Trusted <span>Partners</span>
+            </h2>
+
+            <div class="logo-carousel luxury-fade">
+
+                <!-- ROW 1 (Left → Right) -->
+                <div class="logo-track left">
+                    <img src="logos/LIC-Logo.png" alt="LIC">
+                    <img src="logos/hdfc.jpg" alt="HDFC Life">
+                    <img src="logos/icici-pru-life.webp" alt="ICICI Prudential">
+                    <img src="logos/sbi-life.png" alt="SBI Life">
+                    <img src="logos/max-life.png" alt="Max Life">
+                    <img src="logos/tata-AIA.png" alt="Tata AIA">
+                    <img src="logos/kotak-life.png" alt="Kotak Life">
+                    <img src="logos/bajaj.png" alt="Bajaj Allianz Life">
+                    <img src="logos/go digit.png" alt="Go Digit Life Insurance Limited">
+                    <img src="logos/union.png" alt="Union Dai-Ichi Life Insurance Company Limited">
+                    <img src="logos/aditya-birla.jfif" alt="Aditya Birla SunLife Insurance Company Limited">
+                </div>
+
+                <!-- ROW 2 (Right → Left) -->
+                <div class="logo-track right">
+                    <img src="logos/Star_Health_and_Allied_Insurance.svg.png" alt="Star Health">
+                    <img src="logos/HDFC-Ergo-logo.png" alt="HDFC ERGO">
+                    <img src="logos/Icici-Lombard-Logo-Vector.svg-.png" alt="ICICI Lombard">
+                    <img src="logos/tata.png" alt="Tata AIG">
+                    <img src="logos/new-india-life.png" alt="New India Assurance">
+                    <img src="logos/niva.png" alt="Niva Bupa">
+                    <img src="logos/care-health.png" alt="Care Health">
+                    <img src="logos/met-life.png" alt="MetLife India Insurance Company Limited">
+                    <img src="logos/reliance-general.png" alt="Reliance General">
+                    <img src="logos/acko.png" alt="Acko Life Insurance Limited">
+                    <img src="logos/credit-life.png" alt="CreditAccess Life Insurance Limited">
+                </div>
+
+            </div>
+
+            <p class="partners-disclaimer">
+                Paisabada Financial Services acts as an authorised POS insurance facilitator. Insurance products are
+                underwritten and issued by respective IRDAI-licensed insurers. We do not underwrite or assume risk.
+                Policy
+                issuance, terms, and claim settlement are subject to the insurer’s guidelines.
+                Logos are property of respective insurance companies and used for identification purposes only.
+            </p>
+
+            <p class="partners-pos">
+                POS Code: (IP382943) | Operating under authorised insurance distribution framework.
+            </p>
+
+            <!-- IRDAI DISCLAIMER -->
+            <!-- <p class="irdai-note">
+            PaisaBada is a registered insurance web aggregator. Insurance products are offered by IRDAI-licensed
+            insurers.
+            IRDAI Registration No: <strong>XXXX</strong>.
+        </p> -->
+        </section>
+
+        <div class="copyright">
+            © 2026 Paisabada™ Financial Services.<br>
+            Powered by Wealtrix™ Fintech Pvt Ltd.
+        </div>
+
+    </div>
+
+    <script>
+        function togglePassword() {
+            const p = document.getElementById("signupPassword");
+            p.type = p.type === "password" ? "text" : "password";
+        }
+
+        function validateEmail(e) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+        }
+
+        function validatePhone(p) {
+            return /^[6-9]\d{9}$/.test(p);
+        }
+
+        function showError(msg) {
+            const err = document.getElementById("errorMsg");
+            err.innerText = msg;
+            err.style.display = "block";
+
+            const card = document.getElementById("signupCard");
+            card.style.animation = "shake .3s";
+            setTimeout(() => card.style.animation = "", 300);
+        }
+
+        ///////////// new code ///////////////////////
+
+        // async function signup() {
+
+        // const name = signupName.value.trim();
+        // const email = signupEmail.value.trim();
+        // const phone = signupPhone.value.trim();
+        // const password = signupPassword.value.trim();
+        // const consent = document.getElementById("userConsent").checked;
+
+        // const err = document.getElementById("errorMsg");
+        // const success = document.getElementById("successMsg");
+
+        // err.style.display = "none";
+        // success.style.display = "none";
+
+        // if (!name || !email || !phone || !password) {
+        // showError("All fields are required"); return;
+        // }
+
+        // if (!validateEmail(email)) {
+        // showError("Invalid email address"); return;
+        // }
+
+        // if (!validatePhone(phone)) {
+        // showError("Invalid mobile number"); return;
+        // }
+
+        // if (password.length < 6) {
+        // showError("Password must be at least 6 characters"); return;
+        // }
+
+        // if (!consent) {
+
+        // showError("Please accept consent to continue"); return;
+        // }
+
+        // // GET REFERRAL FROM URL (IMPORTANT)
+        // const params = new URLSearchParams(window.location.search);
+        // const referralCodeFromUrl = params.get("code");
+
+        // try {
+
+        // const consentTimestamp = Date.now();
+
+        // const res = await fetch("http://localhost:8080/api/auth/signup", {
+        // method: "POST",
+        // headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify({
+        // name,
+        // email,
+        // password,
+        // mobile: phone,
+        // referralCode: referralCodeFromUrl, // from URL
+        // // communicationConsent: true
+        // communicationConsent: consent,
+        // consentTimestamp: consentTimestamp
+
+        // })
+        // });
+
+        // if (!res.ok) {
+        // const msg = await res.text();
+        // throw new Error(msg || "Signup failed");
+        // }
+
+        // success.style.display = "block";
+        // setTimeout(() => window.location.href = "login.html", 900);
+
+        // } catch (e) {
+        // showError(e.message || "Server error");
+        // }
+        // }
+
+        let otpSent = false;
+
+        async function signup() {
+
+            const name = signupName.value.trim();
+            const email = signupEmail.value.trim();
+            const phone = signupPhone.value.trim();
+            const consent = document.getElementById("userConsent").checked;
+            const otp = document.getElementById("signupOtp")?.value?.trim();
+
+            const err = document.getElementById("errorMsg");
+            const success = document.getElementById("successMsg");
+
+            err.style.display = "none";
+            success.style.display = "none";
+
+            if (!otpSent) {
+
+                if (!name || !email || !phone) {
+                    showError("All fields are required");
+                    return;
+
+                }
+
+                if (!validateEmail(email)) {
+                    showError("Invalid email address");
+                    return;
+                }
+
+                if (!validatePhone(phone)) {
+                    showError("Invalid mobile number");
+                    return;
+                }
+
+                if (!consent) {
+                    showError("Please accept consent to continue");
+                    return;
+                }
+
+                try {
+
+                    const res = await fetch("https://paisabada.in/api/auth/send-otp", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ mobile: phone })
+                    });
+
+                    if (!res.ok) throw new Error();
+
+                    // const sessionId = await res.text();
+                    // localStorage.setItem("otpSessionId", sessionId);
+
+                    document.getElementById("otpBox").style.display = "block";
+                    document.getElementById("signupBtn").innerText = "Verify & Create Account";
+                    document.getElementById("signupPhone").disabled = true;
+                    document.getElementById("otpInfo").style.display = "block";
+                    otpSent = true;
+
+                } catch (e) {
+                    showError("Unable to send OTP");
+                }
+
+            } else {
+
+                if (!otp) {
+                    showError("Enter OTP");
+                    return;
+                }
+
+                try {
+
+                    // STEP 1 — VERIFY OTP
+                    const verifyRes = await fetch("https://paisabada.in/api/auth/verify-otp", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            mobile: phone,
+                            otp: otp
+                        })
+                    });
+                    if (!verifyRes.ok) {
+                        showError("Invalid OTP");
+
+                        return;
+                    }
+
+                    // GET REFERRAL FROM URL
+                    const params = new URLSearchParams(window.location.search);
+                    const referralCode = params.get("code");
+                    const signupRes = await fetch("https://paisabada.in/api/auth/signup", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            mobile: phone,
+                            referralCode: referralCode,
+                            communicationConsent: consent
+                        })
+                    });
+
+                    if (!signupRes.ok) {
+                        throw new Error("Signup failed");
+                    }
+
+                    const user = await signupRes.json();
+
+                    success.style.display = "block";
+
+                    setTimeout(() => {
+                        window.location.href = "login.html";
+                    }, 800);
+
+                } catch (e) {
+
+                    showError("Invalid OTP");
+                }
+            }
+        }
+
+        // capture referral code
+        const params = new URLSearchParams(window.location.search);
+
+        // const referralCode = params.get("code");
+        // if (referralCode) {
+        // localStorage.setItem("pbReferralCode", referralCode);
+        // }
+    </script>
+
+    <script>
+
+        function toggleConsent() {
+            const box = document.getElementById("consentDetails");
+            const arrow = document.querySelector(".toggle-more");
+
+            box.classList.toggle("active");
+            arrow.textContent = box.classList.contains("active") ? " ▲" : " ▼";
+        }
+    </script>
+
+</body>
+
+</html>
